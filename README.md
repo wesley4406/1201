@@ -1,20 +1,40 @@
 # RCspeed
-int x=0;
-void setup() {
-  // put your setup code here, to run once:
-pinMode (2,OUTPUT);
-pinMode (7,INPUT);
-pinMode (8,INPUT);
-}
 
-void loop() {
-  // put your main code here, to run repeatedly:
-  if(digitalRead(7)==1){
-digitalWrite(2,HIGH);
-delay (200);
-
-}
-if(digitalRead(7)==0){
-digitalWrite(2,LOW);
-delay (200);
-}
+#include
+<Servo.h> Servo RC;   
+int a = 0;  
+void setup() {  
+RC.attach(9);   
+pinMode(4,INPUT);  
+}  
+  
+void loop() {  
+if (digitalRead(4) == 0)   
+{  
+while(digitalRead(4) == 0);   
+a = (a+1)%7; delay(250);  
+}   
+switch(a){  
+case 0:   
+RC.write(0);  
+break;   
+case 1:   
+RC.write(30);  
+break;  
+case 2:  
+RC.write(60);  
+break;  
+case 3:  
+RC.write(90);  
+break; case 4:  
+RC.write(120);  
+break;  
+case 5:  
+RC.write(150);   
+break;  
+case 6:  
+RC.write(180);  
+break;  
+}  
+}  
+  
